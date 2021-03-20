@@ -1,5 +1,5 @@
 ﻿using Business.Concrete.Managers;
-using DataAccess.Concrete;
+using DataAccess.Concrete.EntityFramework;
 using System;
 
 namespace ConsoleUI
@@ -8,7 +8,7 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            GetBookings();
+            GetRentals();
             //GetCustomers();
         }
 
@@ -18,17 +18,17 @@ namespace ConsoleUI
             var result = customerManager.GetCustomers();
             foreach (var customer in result)
             {
-                Console.WriteLine($"{customer.FirstName} {customer.LastName}");
+                //Console.WriteLine($"{customer.User.FirstName} {customer.User.LastName}");
             }
         }
 
-        private static void GetBookings()
+        private static void GetRentals()
         {
-            BookingManager bookingManager = new BookingManager(new EfBookingDal());
-            var result = bookingManager.GetBookings();
-            foreach (var booking in result)
+            RentalManager RentalManager = new RentalManager(new EfRentalDal());
+            var result = RentalManager.GetRentals();
+            foreach (var rental in result)
             {
-                //Console.WriteLine($"{booking.Customer.FirstName} {booking.FromDate} {booking.Vehicle.Brand.BrandName} {booking.Vehicle.Name}");
+                Console.WriteLine($"{rental.CarId}");
             }
         }
     }

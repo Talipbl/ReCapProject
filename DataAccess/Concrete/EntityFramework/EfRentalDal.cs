@@ -7,10 +7,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataAccess.Concrete
+namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfBookingDal:EfEntityRepositoryBase<Booking,ReCapContext>,IBookingDal
+    public class EfRentalDal:EfEntityRepositoryBase<Rental,ReCapContext>,IRentalDal
     {
-        //this area include booking special process
+        //this area include Rental special process
     }
 }

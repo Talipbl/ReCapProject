@@ -6,8 +6,8 @@ using System.Text;
 
 namespace DataAccess.Abstract
 {
-    public interface IBookingDal:IEntityRepository<Booking>
+    public interface IRentalDal:IEntityRepository<Rental>
     {
-        //this area include booking special process
+        //this area include Rental special process
     }
 }

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Business.Concrete.Managers
 {
-    class BookingManager : IBookingService
+    public class BookingManager : IBookingService
     {
         IBookingDal _bookingDal;
 
@@ -26,6 +26,12 @@ namespace Business.Concrete.Managers
             throw new NotImplementedException();
         }
 
+        public Booking GetBooking(int id)
+        {
+            return _bookingDal.Get(x => x.ID == id);
+
+        }
+
         public Booking GetBookingByCustemerId(int customerId)
         {
             throw new NotImplementedException();
@@ -39,6 +45,16 @@ namespace Business.Concrete.Managers
         public List<Booking> GetBookings()
         {
             return _bookingDal.GetAll();
+        }
+
+        public List<Booking> GetBookingsByCustemerId(int customerId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Booking> GetBookingsByVehicle(int vehicleId)
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(Booking booking)

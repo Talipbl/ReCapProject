@@ -8,8 +8,10 @@ namespace Business.Abstract
     public interface IBookingService
     {
         List<Booking> GetBookings();
-        Booking GetBookingByCustemerId(int customerId);
-        Booking GetBookingByVehicle(int vehicleId);
+        List<Booking> GetBookingsByCustemerId(int customerId);
+        List<Booking> GetBookingsByVehicle(int vehicleId);
+        Booking GetBooking(int id);
+
         void Add(Booking booking);
         void Delete(Booking booking);
         void Update(Booking booking);

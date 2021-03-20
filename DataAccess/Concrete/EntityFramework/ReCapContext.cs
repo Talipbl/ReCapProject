@@ -10,10 +10,10 @@ namespace DataAccess.Concrete.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("ServerDESKTOP-R2TQ29K;Database=ReCap;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Server=DESKTOP-R2TQ29K;Database=ReCap;Integrated Security=True");
         }
 
-        public virtual DbSet<Booking> Bookingsk { get; set; }
+        public virtual DbSet<Booking> BookingsSample { get; set; }
         public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<Color> Colors { get; set; }
         public virtual DbSet<Customer> Customers{ get; set; }

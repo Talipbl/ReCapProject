@@ -1,9 +1,10 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Concrete.DataTransferObjects;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace Business.Concrete.Managers
 {
@@ -18,12 +19,12 @@ namespace Business.Concrete.Managers
 
         public void Add(Rental rental)
         {
-            throw new NotImplementedException();
+            _rentalDal.Add(rental);
         }
 
         public void Delete(Rental rental)
         {
-            throw new NotImplementedException();
+            _rentalDal.Delete(rental);
         }
 
         public Rental GetRental(int id)
@@ -37,19 +38,45 @@ namespace Business.Concrete.Managers
             return _rentalDal.GetAll();
         }
 
-        public List<Rental> GetRentalsByCar(int carId)
+        public List<RentalDTO> GetRentalsByCar(int carId)
         {
-            throw new NotImplementedException();
+            return _rentalDal.GetRentalsWithJoin(c => c.CarId == carId).Select(x => new RentalDTO
+            {
+                RentID = x.RentID,
+                CarId = x.CarId,
+                UserId = x.UserId,
+                CarName = x.Car.CarName,
+                BrandName = x.Car.Brand.BrandName,
+                FirstName = x.User.FirstName,
+                LastName = x.User.LastName,
+                RentDate = x.RentDate,
+                ReturnDate = x.ReturnDate,
+                TotalPrice = (decimal)x.TotalPrice
+            }).ToList();
         }
 
-        public List<Rental> GetRentalsByCustemerId(int customerId)
+        public List<RentalDTO> GetRentalsByUserId(int userId)
         {
-            throw new NotImplementedException();
+            var result = _rentalDal.GetRentalsWithJoin().Select(x => new RentalDTO
+            {
+                RentID = x.RentID,
+                CarId = x.CarId,
+                UserId = x.UserId,
+                CarName = x.Car.CarName,
+                BrandName = x.Car.Brand.BrandName,
+                FirstName = x.User.FirstName,
+                LastName = x.User.LastName,
+                RentDate = x.RentDate,
+                ReturnDate = x.ReturnDate,
+                TotalPrice = (decimal)x.TotalPrice
+            }).ToList();
+
+            return result;
         }
 
         public void Update(Rental rental)
         {
-            throw new NotImplementedException();
+            _rentalDal.Update(rental);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Entities.Concrete
     public class Brand:IEntity
     {
         public int BrandID { get; set; }
-        public string Name { get; set; }
+        public string BrandName { get; set; }
         public virtual List<Car> Cars { get; set; }
     }
 }

@@ -8,8 +8,19 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            GetRentals();
+            //GetRentals();
             //GetCustomers();
+            GetRentalWithJoin();
+
+        }
+
+        private static void GetRentalWithJoin()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            foreach (var rentals in rentalManager.GetRentalsByUserId(7))
+            {
+                Console.WriteLine($"{rentals.BrandName} {rentals.CarName}");
+            }
         }
 
         private static void GetCustomers()

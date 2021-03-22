@@ -1,5 +1,6 @@
 ﻿using Core.DataAccess;
 using Entities.Concrete;
+using Entities.Concrete.DataTransferObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -10,7 +11,8 @@ namespace DataAccess.Abstract
     public interface IRentalDal:IEntityRepository<Rental>
     {
         //this area include Rental special process
-        List<Rental> GetRentalsWithJoin(Expression<Func<Rental, bool>> filter = null);
+        List<RentalDTO> GetRentalsByCarWithJoin(int carId);
+        List<RentalDTO> GetRentalByUserWithJoin(int userId);
 
     }
 }

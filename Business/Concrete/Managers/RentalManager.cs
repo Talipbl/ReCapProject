@@ -33,45 +33,49 @@ namespace Business.Concrete.Managers
 
         }
 
-        public List<Rental> GetRentals()
+        public List<RentalDTO> GetRentals()
         {
-            return _rentalDal.GetAll();
+            //return _rentalDal.GetAll();
+            return _rentalDal.GetRentalsByCarWithJoin();
         }
 
         public List<RentalDTO> GetRentalsByCar(int carId)
         {
-            return _rentalDal.GetRentalsWithJoin(c => c.CarId == carId).Select(x => new RentalDTO
-            {
-                RentID = x.RentID,
-                CarId = x.CarId,
-                UserId = x.UserId,
-                CarName = x.Car.CarName,
-                BrandName = x.Car.Brand.BrandName,
-                FirstName = x.User.FirstName,
-                LastName = x.User.LastName,
-                RentDate = x.RentDate,
-                ReturnDate = x.ReturnDate,
-                TotalPrice = (decimal)x.TotalPrice
-            }).ToList();
+            //return _rentalDal.GetRentalsWithJoin(c => c.CarId == carId).Select(x => new RentalDTO
+            //{
+            //    RentID = x.RentID,
+            //    CarId = x.CarId,
+            //    UserId = x.UserId,
+            //    CarName = x.Car.CarName,
+            //    BrandName = x.Car.Brand.BrandName,
+            //    FirstName = x.User.FirstName,
+            //    LastName = x.User.LastName,
+            //    RentDate = x.RentDate,
+            //    ReturnDate = x.ReturnDate,
+            //    TotalPrice = (decimal)x.TotalPrice
+            //}).ToList();
+            return new List<RentalDTO>();
         }
 
         public List<RentalDTO> GetRentalsByUserId(int userId)
         {
-            var result = _rentalDal.GetRentalsWithJoin().Select(x => new RentalDTO
-            {
-                RentID = x.RentID,
-                CarId = x.CarId,
-                UserId = x.UserId,
-                CarName = x.Car.CarName,
-                BrandName = x.Car.Brand.BrandName,
-                FirstName = x.User.FirstName,
-                LastName = x.User.LastName,
-                RentDate = x.RentDate,
-                ReturnDate = x.ReturnDate,
-                TotalPrice = (decimal)x.TotalPrice
-            }).ToList();
+            //var result = _rentalDal.GetRentalsWithJoin().Select(x => new RentalDTO
+            //{
+            //    RentID = x.RentID,
+            //    CarId = x.CarId,
+            //    UserId = x.UserId,
+            //    CarName = x.Car.CarName,
+            //    BrandName = x.Car.Brand.BrandName,
+            //    FirstName = x.User.FirstName,
+            //    LastName = x.User.LastName,
+            //    RentDate = x.RentDate,
+            //    ReturnDate = x.ReturnDate,
+            //    TotalPrice = (decimal)x.TotalPrice
+            //}).ToList();
 
-            return result;
+            //return result;
+            return new List<RentalDTO>();
+
         }
 
         public void Update(Rental rental)

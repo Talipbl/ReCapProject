@@ -17,7 +17,7 @@ namespace ConsoleUI
         private static void GetRentalWithJoin()
         {
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
-            foreach (var rentals in rentalManager.GetRentalsByUserId(7))
+            foreach (var rentals in rentalManager.GetRentals())
             {
                 Console.WriteLine($"{rentals.BrandName} {rentals.CarName}");
             }

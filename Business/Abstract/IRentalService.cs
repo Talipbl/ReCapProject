@@ -8,7 +8,7 @@ namespace Business.Abstract
 {
     public interface IRentalService
     {
-        List<Rental> GetRentals();
+        List<RentalDTO> GetRentals();
         List<RentalDTO> GetRentalsByUserId(int customerId);
         List<RentalDTO> GetRentalsByCar(int carId);
         Rental GetRental(int id);

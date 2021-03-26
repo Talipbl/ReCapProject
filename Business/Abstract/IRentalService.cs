@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Utilities.Results.Abstract;
+using Entities.Concrete;
 using Entities.Concrete.DataTransferObjects;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,10 @@ namespace Business.Abstract
     {
         List<RentalDTO> GetRentals();
         List<RentalDTO> GetRentalsByUserId(int customerId);
-        List<RentalDTO> GetRentalsByCar(int carId);
+        List<RentalDTO> GetRentalsByCarId(int carId);
         Rental GetRental(int id);
-
-        void Add(Rental rental);
-        void Delete(Rental rental);
-        void Update(Rental rental);
+        IResult Add(Rental rental);
+        IResult Delete(Rental rental);
+        IResult Update(Rental rental);
     }
 }

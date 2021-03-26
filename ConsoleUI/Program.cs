@@ -8,7 +8,6 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            //GetRentals();
             //GetCustomers();
             GetRentalWithJoin();
 
@@ -30,16 +29,6 @@ namespace ConsoleUI
             foreach (var customer in result)
             {
                 //Console.WriteLine($"{customer.User.FirstName} {customer.User.LastName}");
-            }
-        }
-
-        private static void GetRentals()
-        {
-            RentalManager RentalManager = new RentalManager(new EfRentalDal());
-            var result = RentalManager.GetRentals();
-            foreach (var rental in result)
-            {
-                Console.WriteLine($"{rental.CarId}");
             }
         }
     }

@@ -13,6 +13,6 @@ namespace DataAccess.Abstract
         //this area include Rental special process
         List<RentalDTO> GetRentalsByCarWithJoin(int carId);
         List<RentalDTO> GetRentalByUserWithJoin(int userId);
-
+        List<RentalDTO> GetRentals();
     }
 }

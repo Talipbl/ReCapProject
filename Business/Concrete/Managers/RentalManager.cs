@@ -1,4 +1,8 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.DataAccess;
+using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.Concrete.DataTransferObjects;
@@ -16,15 +20,22 @@ namespace Business.Concrete.Managers
         {
             _rentalDal = rentalDal;
         }
-
-        public void Add(Rental rental)
+        private IResult BaseProccess(int effectedRow, string messages)
         {
-            _rentalDal.Add(rental);
+            if (effectedRow > 0)
+            {
+                return new SuccessResult(messages);
+            }
+            return new ErrorResult();
         }
 
-        public void Delete(Rental rental)
+        public IResult Add(Rental rental)
         {
-            _rentalDal.Delete(rental);
+            return BaseProccess(_rentalDal.Add(rental),Messages.RentalAdded);
+        }
+        public IResult Delete(Rental rental)
+        {
+            return BaseProccess(_rentalDal.Delete(rental), Messages.RentalDeleted);
         }
 
         public Rental GetRental(int id)
@@ -35,52 +46,22 @@ namespace Business.Concrete.Managers
 
         public List<RentalDTO> GetRentals()
         {
-            //return _rentalDal.GetAll();
-            return _rentalDal.GetRentalsByCarWithJoin();
+            return _rentalDal.GetRentals();
         }
 
-        public List<RentalDTO> GetRentalsByCar(int carId)
+        public List<RentalDTO> GetRentalsByCarId(int carId)
         {
-            //return _rentalDal.GetRentalsWithJoin(c => c.CarId == carId).Select(x => new RentalDTO
-            //{
-            //    RentID = x.RentID,
-            //    CarId = x.CarId,
-            //    UserId = x.UserId,
-            //    CarName = x.Car.CarName,
-            //    BrandName = x.Car.Brand.BrandName,
-            //    FirstName = x.User.FirstName,
-            //    LastName = x.User.LastName,
-            //    RentDate = x.RentDate,
-            //    ReturnDate = x.ReturnDate,
-            //    TotalPrice = (decimal)x.TotalPrice
-            //}).ToList();
-            return new List<RentalDTO>();
+            return _rentalDal.GetRentalsByCarWithJoin(carId);
         }
 
         public List<RentalDTO> GetRentalsByUserId(int userId)
         {
-            //var result = _rentalDal.GetRentalsWithJoin().Select(x => new RentalDTO
-            //{
-            //    RentID = x.RentID,
-            //    CarId = x.CarId,
-            //    UserId = x.UserId,
-            //    CarName = x.Car.CarName,
-            //    BrandName = x.Car.Brand.BrandName,
-            //    FirstName = x.User.FirstName,
-            //    LastName = x.User.LastName,
-            //    RentDate = x.RentDate,
-            //    ReturnDate = x.ReturnDate,
-            //    TotalPrice = (decimal)x.TotalPrice
-            //}).ToList();
-
-            //return result;
             return new List<RentalDTO>();
-
         }
 
-        public void Update(Rental rental)
+        public IResult Update(Rental rental)
         {
-            _rentalDal.Update(rental);
+            return BaseProccess(_rentalDal.Update(rental), Messages.RentalUpdated);
         }
     }
 }

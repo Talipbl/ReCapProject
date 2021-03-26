@@ -20,9 +20,9 @@ namespace Business.Concrete.Managers
         {
             _rentalDal = rentalDal;
         }
-        private IResult BaseProccess(int effectedRow, string messages)
+        private IResult BaseProccess(int affectedRow, string messages)
         {
-            if (effectedRow > 0)
+            if (affectedRow > 0)
             {
                 return new SuccessResult(messages);
             }
@@ -38,25 +38,24 @@ namespace Business.Concrete.Managers
             return BaseProccess(_rentalDal.Delete(rental), Messages.RentalDeleted);
         }
 
-        public Rental GetRental(int id)
+        public IDataResult<Rental> GetRental(int id)
         {
-            return _rentalDal.Get(x => x.RentID == id);
-
+            return new SuccessDataResult<Rental>(_rentalDal.Get(x => x.RentID == id),Messages.RentalListed);
         }
 
-        public List<RentalDTO> GetRentals()
+        public IDataResult<List<RentalDTO>> GetRentals()
         {
-            return _rentalDal.GetRentals();
+            return new SuccessDataResult<List<RentalDTO>>(_rentalDal.GetRentals(),Messages.RentalsListed);
         }
 
-        public List<RentalDTO> GetRentalsByCarId(int carId)
+        public IDataResult<List<RentalDTO>> GetRentalsByCarId(int carId)
         {
-            return _rentalDal.GetRentalsByCarWithJoin(carId);
+            return new SuccessDataResult<List<RentalDTO>>(_rentalDal.GetRentalsByCarWithJoin(carId),Messages.RentalsListed);
         }
 
-        public List<RentalDTO> GetRentalsByUserId(int userId)
+        public IDataResult<List<RentalDTO>> GetRentalsByUserId(int userId)
         {
-            return new List<RentalDTO>();
+            return new SuccessDataResult<List<RentalDTO>>(_rentalDal.GetRentalByUserWithJoin(userId), Messages.RentalsListed);
         }
 
         public IResult Update(Rental rental)

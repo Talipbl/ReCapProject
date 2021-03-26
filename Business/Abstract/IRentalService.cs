@@ -1,4 +1,5 @@
 ﻿using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 using Entities.Concrete;
 using Entities.Concrete.DataTransferObjects;
 using System;
@@ -9,10 +10,10 @@ namespace Business.Abstract
 {
     public interface IRentalService
     {
-        List<RentalDTO> GetRentals();
-        List<RentalDTO> GetRentalsByUserId(int customerId);
-        List<RentalDTO> GetRentalsByCarId(int carId);
-        Rental GetRental(int id);
+        IDataResult<List<RentalDTO>> GetRentals();
+        IDataResult<List<RentalDTO>> GetRentalsByUserId(int customerId);
+        IDataResult<List<RentalDTO>> GetRentalsByCarId(int carId);
+        IDataResult<Rental> GetRental(int id);
         IResult Add(Rental rental);
         IResult Delete(Rental rental);
         IResult Update(Rental rental);

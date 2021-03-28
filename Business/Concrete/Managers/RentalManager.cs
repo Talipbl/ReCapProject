@@ -31,36 +31,36 @@ namespace Business.Concrete.Managers
 
         public IResult Add(Rental rental)
         {
-            return BaseProccess(_rentalDal.Add(rental),Messages.RentalAdded);
+            return BaseProccess(_rentalDal.Add(rental),Messages.Rental.RentalAdded);
         }
         public IResult Delete(Rental rental)
         {
-            return BaseProccess(_rentalDal.Delete(rental), Messages.RentalDeleted);
+            return BaseProccess(_rentalDal.Delete(rental), Messages.Rental.RentalDeleted);
         }
 
         public IDataResult<Rental> GetRental(int id)
         {
-            return new SuccessDataResult<Rental>(_rentalDal.Get(x => x.RentID == id),Messages.RentalListed);
+            return new SuccessDataResult<Rental>(_rentalDal.Get(x => x.RentID == id),Messages.Rental.RentalListed);
         }
 
         public IDataResult<List<RentalDTO>> GetRentals()
         {
-            return new SuccessDataResult<List<RentalDTO>>(_rentalDal.GetRentals(),Messages.RentalsListed);
+            return new SuccessDataResult<List<RentalDTO>>(_rentalDal.GetRentals(),Messages.Rental.RentalsListed);
         }
 
         public IDataResult<List<RentalDTO>> GetRentalsByCarId(int carId)
         {
-            return new SuccessDataResult<List<RentalDTO>>(_rentalDal.GetRentalsByCarWithJoin(carId),Messages.RentalsListed);
+            return new SuccessDataResult<List<RentalDTO>>(_rentalDal.GetRentalsByCarWithJoin(carId),Messages.Rental.RentalsListed);
         }
 
         public IDataResult<List<RentalDTO>> GetRentalsByUserId(int userId)
         {
-            return new SuccessDataResult<List<RentalDTO>>(_rentalDal.GetRentalByUserWithJoin(userId), Messages.RentalsListed);
+            return new SuccessDataResult<List<RentalDTO>>(_rentalDal.GetRentalByUserWithJoin(userId), Messages.Rental.RentalsListed);
         }
 
         public IResult Update(Rental rental)
         {
-            return BaseProccess(_rentalDal.Update(rental), Messages.RentalUpdated);
+            return BaseProccess(_rentalDal.Update(rental), Messages.Rental.RentalUpdated);
         }
     }
 }

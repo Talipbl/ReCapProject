@@ -9,8 +9,20 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
             //GetCustomers();
-            GetRentalWithJoin();
 
+            //GetRentalWithJoin();
+
+            GetCarsWithJoin();
+
+        }
+
+        private static void GetCarsWithJoin()
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
+            foreach (var car in carManager.GetCarsWithJoin().Data)
+            {
+                Console.WriteLine($"{car.BrandName} {car.CarName} {car.ColorName} {car.DailyPrice}");
+            }
         }
 
         private static void GetRentalWithJoin()

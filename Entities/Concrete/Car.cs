@@ -1,6 +1,7 @@
 ﻿using Core.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Entities.Concrete
@@ -9,7 +10,9 @@ namespace Entities.Concrete
     {
         public int CarID { get; set; }
         public string CarName { get; set; }
+        [ForeignKey("BrandId")]
         public int BrandId { get; set; }
+        [ForeignKey("ColorId")]
         public int ColorId { get; set; }
         public int? ModelYear { get; set; }
         public decimal DailyPrice { get; set; }

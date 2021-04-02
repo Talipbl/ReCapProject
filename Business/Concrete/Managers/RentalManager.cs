@@ -31,7 +31,11 @@ namespace Business.Concrete.Managers
 
         public IResult Add(Rental rental)
         {
-            return BaseProccess(_rentalDal.Add(rental),Messages.Rental.RentalAdded);
+            if (_rentalDal.Get(x => x.CarId == rental.CarId && x.ReturnDate == null) != null)
+            {
+                return BaseProccess(_rentalDal.Add(rental), Messages.Rental.RentalAdded);
+            }
+            return new ErrorResult();
         }
         public IResult Delete(Rental rental)
         {

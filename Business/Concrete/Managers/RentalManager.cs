@@ -20,9 +20,9 @@ namespace Business.Concrete.Managers
         {
             _rentalDal = rentalDal;
         }
-        private IResult BaseProccess(int affectedRow, string messages)
+        private IResult BaseProccess(bool state, string messages)
         {
-            if (affectedRow > 0)
+            if (state)
             {
                 return new SuccessResult(messages);
             }

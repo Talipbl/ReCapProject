@@ -22,6 +22,14 @@ namespace Business.Constants
             public static string CustomerDeleted = "Customer Deleted";
             public static string CustomerUpdated = "Customer Updated";
         }
+        public static class Brand
+        {
+            public static string BrandAdded = "Brand Added";
+            public static string BrandsListed = "Brands Listed";
+            public static string BrandListed = "Brand Listed";
+            public static string BrandDeleted = "Brand Deleted";
+            public static string BrandUpdated = "Brand Updated";
+        }
 
         public static string MaintenanceTime = "Maintenance Time";
 

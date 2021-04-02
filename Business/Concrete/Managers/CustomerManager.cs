@@ -12,33 +12,33 @@ namespace Business.Concrete.Managers
 {
     public class CustomerManager : ICustomerService
     {
-        ICustomerDal _customerDal;
-        public CustomerManager(ICustomerDal customerDal)
+        IUserDal _customerDal;
+        public CustomerManager(IUserDal customerDal)
         {
             _customerDal = customerDal;
         }
 
-        public IResult Add(Customer customer)
+        public IResult Add(User user)
         {
             return new SuccessResult(Messages.Customer.CustomerAdded);
         }
 
-        public IResult Delete(Customer customer)
+        public IResult Delete(User user)
         {
             return new SuccessResult(Messages.Customer.CustomerDeleted);
         }
 
-        public IDataResult<Customer> GetCustomer(int customerId)
+        public IDataResult<User> GetCustomer(int userId)
         {
-            return new SuccessDataResult<Customer>(_customerDal.Get(x => x.CustomerID == customerId), Messages.Customer.CustomerListed);
+            return new SuccessDataResult<User>(_customerDal.Get(x => x.UserID == userId), Messages.Customer.CustomerListed);
         }
 
-        public IDataResult<List<Customer>> GetCustomers()
+        public IDataResult<List<User>> GetCustomers()
         {
-            return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(), Messages.Customer.CustomersListed);
+            return new SuccessDataResult<List<User>>(_customerDal.GetAll(), Messages.Customer.CustomersListed);
         }
 
-        public IResult Update(Customer customer)
+        public IResult Update(User user)
         {
             return new SuccessResult(Messages.Customer.CustomerUpdated);
         }

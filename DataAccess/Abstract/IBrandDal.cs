@@ -6,8 +6,8 @@ using System.Text;
 
 namespace DataAccess.Abstract
 {
-    public interface ICustomerDal:IEntityRepository<Customer>
+    public interface IBrandDal:IEntityRepository<Brand>
     {
-        //this area include customer special process
+
     }
 }

@@ -40,7 +40,7 @@ namespace ConsoleUI
             var result = customerManager.GetCustomers().Data;
             foreach (var customer in result)
             {
-                //Console.WriteLine($"{customer.User.FirstName} {customer.User.LastName}");
+                Console.WriteLine($"{customer.FirstName} {customer.LastName}");
             }
         }
     }

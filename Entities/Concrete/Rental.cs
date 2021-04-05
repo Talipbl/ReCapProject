@@ -15,6 +15,7 @@ namespace Entities.Concrete
         public DateTime RentDate { get; set; }
         public DateTime? ReturnDate { get; set; }
         public decimal? TotalPrice { get; set; }
+
         public virtual User User { get; set; }
         public virtual Car Car { get; set; }
     }

@@ -40,7 +40,7 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (ReCapContext context = new ReCapContext())
             {
-                return GetCarsWithJoin();
+                return GetCarsWithJoin(context);
 
                 //return GetCarsWithJoin(context).ToList();
             }

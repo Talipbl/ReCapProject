@@ -49,6 +49,10 @@ namespace Business.Concrete.Managers
 
         public IDataResult<List<RentalDTO>> GetRentals()
         {
+            if (DateTime.Now.Hour == 19)
+            {
+                return new ErrorDataResult<List<RentalDTO>>(Messages.MaintenanceTime);
+            }
             return new SuccessDataResult<List<RentalDTO>>(_rentalDal.GetRentals(),Messages.Rental.RentalsListed);
         }
 
